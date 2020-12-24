@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    여기는 홈!!!!!!!
-    {{ texts }}
+{% extends 'inflearn_lecture/base.html'%}
 
-</body>
-</html>
+{% block content %}
+
+    <h2>인기 강의</h2>
+    {% for text in texts %}
+
+        {{ text.title }}
+        <br/>
+
+    {% endfor %}
+
+{% endblock %}

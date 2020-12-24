@@ -5,7 +5,6 @@ def home_list(request) :
 
     texts = myText.objects.filter()
 
-    # texts = "1번 타이틀"
-    # texts = "2번 타이틀"
+    print(texts)
 
     return render(request, 'inflearn_lecture/home_list.html', {'texts': texts})

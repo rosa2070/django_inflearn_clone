@@ -12,6 +12,8 @@ class myText(models.Model):
     contents = models.CharField(max_length=200)
     img_url = models.CharField(max_length=200)
 
+    category = models.CharField(max_length=200, null=True)
+
     board_text = RichTextUploadingField(null=True)
 
 
