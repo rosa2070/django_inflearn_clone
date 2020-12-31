@@ -10,7 +10,7 @@ class myText(models.Model):
 
     title = models.CharField(max_length=200)
     contents = models.CharField(max_length=200)
-    img_url = models.CharField(max_length=200)
+    img_url = models.FileField(null=True)
 
     category = models.CharField(max_length=200, null=True)
 
