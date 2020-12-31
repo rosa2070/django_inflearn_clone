@@ -2,12 +2,14 @@
 
 {% block content %}
 
-    <h2>인기 강의</h2>
+    <h2>인기 강</h2>
     {% for text in texts %}
-
+        <img src="{{ text.img_url }}" width="100">
+        <br/>
         {{ text.title }}
         <br/>
-
     {% endfor %}
+
+
 
 {% endblock %}
