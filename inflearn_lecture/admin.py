@@ -2,5 +2,8 @@ from django.contrib import admin
 from .models import myText
 
 
-admin.site.register(myText)
-# Register your models here.
+class MyTextAdmin(admin.ModelAdmin) :
+    list_display = ('pk', 'title')
+
+admin.site.register(myText, MyTextAdmin)
+

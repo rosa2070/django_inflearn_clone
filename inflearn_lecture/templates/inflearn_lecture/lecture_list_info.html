@@ -1,0 +1,18 @@
+{% extends 'inflearn_lecture/base.html'%}
+
+{% block content %}
+    <style>
+        .contents {
+            width:1000px;
+            margin:auto;
+            padding:100px;
+
+        }
+    </style>
+    <div class="contents">
+
+        {{board_contents.board_text | safe}}
+
+    </div>
+
+{% endblock %}
