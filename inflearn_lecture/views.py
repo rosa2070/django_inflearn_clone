@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import myText
+from .models import myText, Comment
 
 # Create your views here.
 def home_list(request) :
@@ -73,8 +73,42 @@ def logout(request) :
 def lecture_list_info(request, pk) :
 
     board_contents = get_object_or_404(myText, pk = pk)
+    comment = Comment.objects.filter(lecture = board_contents)
 
-    print(board_contents)
+    print('comment : ', comment)
 
-    return render(request, 'inflearn_lecture/lecture_list_info.html', {'board_contents' :board_contents})
+    if request.user.is_authenticated :
+        print("이게뭔가??")
+        print(request.user.username)
 
+    if request.method == 'POST' :
+        rate = request.POST['rate']
+        writer = request.POST['writer']
+        comment = request.POST['comment']
+
+        Comment.objects.create(lecture = board_contents,
+                               writer = writer,
+                               rate = rate,
+                               comment = comment
+                               )
+
+        return redirect('/lecture_list/' + str(pk))
+
+    return render(request, 'inflearn_lecture/lecture_list_info.html',
+                  {'board_contents' :board_contents,
+                   'comment' : comment,
+                   }
+                  )
+
+def comment_remove(request, pk) :
+
+    if request.method == 'POST' :
+
+        Comment.objects.get(pk=pk).delete()
+
+    return redirect('/lecture_list')
+
+def show_lecture(request, pk) :
+    board_contents = get_object_or_404(myText, pk = pk)
+
+    return render(request, 'inflearn_lecture/show_lecture.html',{'board_contents' : board_contents})
