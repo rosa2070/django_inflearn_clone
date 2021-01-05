@@ -1,0 +1,17 @@
+{% extends 'inflearn_lecture/base.html'%}
+
+{% block content %}
+
+
+    <div style="width: 700px; margin:auto; padding:40px;">
+        <form action="" method="POST">
+            {{lecture_form.as_p}}
+
+            <button type="submit">저장</button>
+
+        </form>
+
+    </div>
+
+
+{% endblock %}

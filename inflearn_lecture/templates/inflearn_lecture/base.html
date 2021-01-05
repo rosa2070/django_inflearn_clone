@@ -68,11 +68,12 @@
                 <a href="/lecture_list"><li>강의보기</li></a>
                 {% if user.is_authenticated %}
                     <a href="/logout"><li>로그아웃</li></a>
+                    <a href="/create_lecture"><li>강의만들기</li></a>
                 {% else %}
                     <a href="/login"><li>로그인</li></a>
                     <a href="/join"><li>회원가입</li></a>
                 {% endif %}
-                <li>메뉴5</li>
+
             </ul>
         </nav>
 

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import myText, Comment
+from .forms import LectureForm
 
 # Create your views here.
 def home_list(request) :
@@ -112,3 +113,9 @@ def show_lecture(request, pk) :
     board_contents = get_object_or_404(myText, pk = pk)
 
     return render(request, 'inflearn_lecture/show_lecture.html',{'board_contents' : board_contents})
+
+def create_lecture(request) :
+
+    lecture_form = LectureForm()
+
+    return render(request, 'inflearn_lecture/create_lecture.html', {'lecture_form' : lecture_form})
